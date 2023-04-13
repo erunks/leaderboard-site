@@ -35,7 +35,8 @@
       "layouts/*": ["./layouts/*"],
       "lib/*": ["./lib/*"],
       "pages/*": ["./pages/*"],
-      "root/*": ["./*"]
+      "root/*": ["./*"],
+      "i18n/*": ["./i18n/*"]
     }
   },
   "exclude": ["node_modules"],

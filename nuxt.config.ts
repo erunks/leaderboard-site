@@ -1,11 +1,8 @@
 import { resolve } from 'path'
 import { config } from 'dotenv-safe'
 
-// Need to explicitly import this otherwise vite.config yells at us
 import { defineNuxtConfig } from 'nuxt/config'
 import { supportedLocales, localeMessages } from './configUtils'
-
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
 
 // Safely loads the .env file, making sure all the variables are defined
 config()
@@ -43,35 +40,24 @@ export default defineNuxtConfig({
   },
   devServerHandlers: [],
 
-  // https://v3.nuxtjs.org/api/configuration/nuxt.config#components
-  // https://v3.nuxtjs.org/guide/directory-structure/components/
-
-  // https://v8.i18n.nuxtjs.org/getting-started/setup
-
-  // TODO: someone who's brain lets them, figure out more proper setup with lazy loading
-  // i tried and couldn't figure it out unfortunately
-
-  // https://v3.nuxtjs.org/api/configuration/nuxt.config#ignore
+  // TODO: look into lazy loading i18n
   i18n: {
-    defaultLocale: 'en',
-    locales: supportedLocales,
-    vueI18n: {
+    config: {
       fallbackLocale: 'en',
       legacy: false,
       locale: 'en',
-      // TODO: can this be cleaner via some sort of iteration? (not sure)
       messages: localeMessages,
     },
+    defaultLocale: 'en',
+    locales: supportedLocales,
   },
 
   ignore: ['**/*.test.ts', '**/node_modules', '.output', '.dist'],
-  // Modules: https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
+
   modules: [
     // https://tailwindcss.com
     [
       '@nuxtjs/tailwindcss',
-      // Global CSS: https://v3.nuxtjs.org/api/configuration/nuxt.config#css
-      // css: ['assets/css/tailwind.css'],
       {
         configPath: 'tailwind.config.js',
         cssPath: './assets/css/tailwind.css',
